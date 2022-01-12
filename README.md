@@ -13,7 +13,7 @@ Simply run atb2lammps.sh using bash:
 ```
 bash atb2lammps.sh KIR7_allatom_optimized_geometry.lt
 ```
-where KIR7_allatom_optimized_geometry.lt i the geometry file download from the ATB. Then run LAMMPS: 
+where KIR7_allatom_optimized_geometry.lt is the geometry file downloaded from the ATB. Then run LAMMPS: 
 
 ```
 lmp -in input.lammps
