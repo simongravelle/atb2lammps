@@ -5,7 +5,7 @@
   <img src="carbon_dioxide_CO2/CO2.webp" align="right" width="20%"/>
 </a>
 
-Use Python and Moltemplate to convert files from the ATB repository to LAMMPS format.
+Use Python and Moltemplate to convert files from the ATB repository to LAMMPS format. Several examples are given here, including carbon dioxide (video on the right), methane, ethanol. 
 
 ## Use
 

@@ -16,11 +16,9 @@ read_data data.lammps
 include parm.lammps
 minimize 1.0e-5 1.0e-7 1000 10000
 reset_timestep 0
-#fix mymom all momentum 100 linear 1 1 1 angular
-fix mynvt all nvt temp 100 100 100
+fix mymom all momentum 100 linear 1 1 1 angular
+fix mynvt all nvt temp 300 300 100
 timestep 1.0
-
+dump mydmp all atom 1000 dump.lammpstrj
 thermo 1000
 run 50000
-dump mydmp all atom 2 dump.lammpstrj
-run		1000
