@@ -1,6 +1,6 @@
 # atb2lammps
 
-![clwater](./methane_CH4/CH4.webp)
+![CH4](./methane_CH4/CH4.webm)
 
 Use Python and Moltemplate to convert files from the ATB repository to LAMMPS format.
 
