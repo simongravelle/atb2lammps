@@ -1,6 +1,9 @@
 # atb2lammps
 
-![CH4](./carbon_dioxide_CO2/CO2.webp)
+
+<a href="webp">
+  <img src="carbon_dioxide_CO2/CO2.webp" align="right" width="20%"/>
+</a>
 
 Use Python and Moltemplate to convert files from the ATB repository to LAMMPS format.
 
