@@ -1,5 +1,5 @@
 # atb2lammps
-Convert files from the ATB repository to LAMMPS format
+Use Python and Moltemplate to convert files from the ATB repository to LAMMPS format
 
 ### Extract system.lt file
 
