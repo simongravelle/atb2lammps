@@ -2,7 +2,7 @@
 
 
 <a href="webp">
-  <img src="carbon_dioxide_CO2/CO2.webp" align="right" width="20%"/>
+  <img src="luteolin_C15H10O6.webp" align="right" width="30%"/>
 </a>
 
 Use Python and Moltemplate to convert files from the ATB repository to LAMMPS format. Several examples are given here, including carbon dioxide (video on the right), methane, ethanol. 

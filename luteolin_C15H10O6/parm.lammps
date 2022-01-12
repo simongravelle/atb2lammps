@@ -1,0 +1,64 @@
+# LAMMPS parameter file 
+# Created using atb2lammps 
+# https://github.com/simongravelle/atb2lammps
+
+mass 1 15.9994 
+mass 2 1.008 
+mass 3 1.008 
+mass 4 15.9994 
+mass 5 12.011 
+mass 6 15.9994 
+
+pair_coeff 1 1 0.25265643 2.8491607 
+pair_coeff 1 2 0.08454927 2.6004272 
+pair_coeff 2 2 0.028293679 2.373408 
+pair_coeff 1 3 0.0 0.0 
+pair_coeff 2 3 0.0 0.0 
+pair_coeff 3 3 0.0 0.0 
+pair_coeff 1 4 0.17371006 3.1125329 
+pair_coeff 2 4 0.058130562 2.8408067 
+pair_coeff 3 4 0.0 0.0 
+pair_coeff 4 4 0.119431704 3.400251 
+pair_coeff 1 5 0.13623317 3.167103 
+pair_coeff 2 5 0.045589242 2.8906128 
+pair_coeff 3 5 0.0 0.0 
+pair_coeff 4 5 0.093665026 3.4598656 
+pair_coeff 5 5 0.07345736 3.5205252 
+pair_coeff 1 6 0.15577295 3.026553 
+pair_coeff 2 6 0.06634514 2.6535041 
+pair_coeff 3 6 0.0 0.0 
+pair_coeff 4 6 0.11946442 3.2466586 
+pair_coeff 5 6 0.10690107 3.2317464 
+pair_coeff 6 6 0.11949714 3.1000042 
+
+bond_coeff 1 349.27414 1.09 
+bond_coeff 2 600.2424 1.23 
+bond_coeff 3 450.9063 1.36 
+bond_coeff 4 500.67877 1.38 
+bond_coeff 5 399.90405 1.39 
+bond_coeff 6 400.05737 1.4 
+bond_coeff 7 399.79163 1.43 
+bond_coeff 8 449.8432 1.47 
+bond_coeff 9 299.97592 1.48 
+bond_coeff 10 310.70746 1.41 
+bond_coeff 11 239.00574 1.46 
+bond_coeff 12 442.1606 0.972 
+bond_coeff 13 0.0 0.0 
+
+angle_coeff 1 47.69405 109.5 
+angle_coeff 2 55.113907 111.0 
+angle_coeff 3 59.79372 115.0 
+angle_coeff 4 60.163933 117.0 
+angle_coeff 5 45.187126 120.0 
+angle_coeff 6 50.11663 120.0 
+angle_coeff 7 69.83462 120.0 
+angle_coeff 8 60.07258 121.0 
+angle_coeff 9 49.997955 126.0 
+
+dihedral_coeff 1 1.4005736 -1 2 
+dihedral_coeff 2 3.9913957 -1 2 
+dihedral_coeff 3 9.990439 -1 2 
+dihedral_coeff 4 0.0 1 1 
+
+improper_coeff 1 20.007544 0.0 
+

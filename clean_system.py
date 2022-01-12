@@ -159,7 +159,7 @@ if nb_impropers>0:
                 splitted_line = line[:-1].split(' ',20)
                 splitted_line = list(filter(None, splitted_line))
                 Impropers.append(np.float32(splitted_line))             
-                cpt += 1
+            cpt += 1
     Impropers = np.array(Impropers)
     
 # filter the force field value 
@@ -223,11 +223,11 @@ if nb_impropers>0:
     cpt = 1
     for ids, value1, value2 in all_improper:
         if np.sum(np.unique(Impropers.T[1]) == ids) > 0:
-            filtered_improper.append(np.array([ids,value1, value2, value3]))
+            filtered_improper.append(np.array([ids,value1, value2]))
             convert_impropers.append([cpt, ids])
             cpt += 1
     filtered_improper = np.array(filtered_improper)
-    convert_dihedrals = np.array(convert_impropers)
+    convert_impropers = np.array(convert_impropers)
     
 if nb_atoms>0:
     # convert ids to be 1,2,3,4...
@@ -266,8 +266,8 @@ if nb_dihedrals>0:
         Dihedrals[where,1] = new_ids
 if nb_impropers>0:
     for new_ids, old_ids in convert_impropers:
-        where = np.where(convert_impropers.T[0] == old_ids)
-        convert_impropers[where,0] = new_ids
+        where = np.where(filtered_improper.T[0] == old_ids)
+        filtered_improper[where,0] = new_ids
 
         where = np.where(Impropers.T[1] == old_ids)
         Impropers[where,1] = new_ids
