@@ -1,6 +1,6 @@
 # atb2lammps
 
-![CH4](./methane_CH4/CH4.webm)
+![CH4](./carbon_dioxide_CO2/CO2.webp)
 
 Use Python and Moltemplate to convert files from the ATB repository to LAMMPS format.
 

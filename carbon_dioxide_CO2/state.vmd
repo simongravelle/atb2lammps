@@ -342,7 +342,7 @@ display dof_fnumber 64.000000
 display dof_focaldist 0.700000
 mol new dump.lammpstrj type lammpstrj first 0 last -1 step 1 filebonds 1 autobonds 1 waitfor all
 mol delrep 0 top
-mol representation VDW 1.000000 57.000000
+mol representation VDW 0.800000 77.000000
 mol color Name
 mol selection {type 1}
 mol material Opaque
@@ -376,7 +376,7 @@ mol clipplane center 5 0 top {0.0 0.0 0.0}
 mol clipplane color  5 0 top {0.5 0.5 0.5 }
 mol clipplane normal 5 0 top {0.0 0.0 1.0}
 mol clipplane status 5 0 top {0}
-mol representation VDW 0.500000 57.000000
+mol representation VDW 0.900000 122.000000
 mol color Name
 mol selection {type 2}
 mol material Opaque
@@ -411,10 +411,10 @@ mol clipplane color  5 1 top {0.5 0.5 0.5 }
 mol clipplane normal 5 1 top {0.0 0.0 1.0}
 mol clipplane status 5 1 top {0}
 mol rename top dump.lammpstrj
-set viewpoints([molinfo top]) {{{1 0 0 -0.000109863} {0 1 0 -4.95911e-05} {0 0 1 0.000180054} {0 0 0 1}} {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} {{0.593608 0 0 0} {0 0.593608 0 0} {0 0 0.593608 0} {0 0 0 1}} {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}}}
+set viewpoints([molinfo top]) {{{1 0 0 -0.000109863} {0 1 0 -4.95911e-05} {0 0 1 0.000180054} {0 0 0 1}} {{0.867801 0.496578 -0.0181708 0} {0.49691 -0.867276 0.0301786 0} {-0.000773414 -0.0352176 -0.999379 0} {0 0 0 1}} {{0.493882 0 0 0} {0 0.493882 0 0} {0 0 0.493882 0} {0 0 0 1}} {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}}}
 lappend viewplist [molinfo top]
 set topmol [molinfo top]
-# done with molecule 0
+# done with molecule 1
 foreach v $viewplist {
   molinfo $v set {center_matrix rotate_matrix scale_matrix global_matrix} $viewpoints($v)
 }
@@ -446,12 +446,12 @@ color scale colors WBlk {1.0 1.0 1.0} {0.5 0.5 0.5} {0.0 0.0 0.0}
     {color Display {FPS} white}
     {color Name {LPA} green}
     {color Name {LPB} green}
-    {color Name {2} white}
-    {color Name {1} gray}
+    {color Name {1} red}
+    {color Name {2} silver}
     {color Type {LP} green}
     {color Type {DRUD} pink}
-    {color Type {2} pink}
     {color Type {1} cyan}
+    {color Type {2} pink}
     {color Element {X} cyan}
     {color Element {Ac} ochre}
     {color Element {Ag} ochre}
@@ -562,6 +562,8 @@ color scale colors WBlk {1.0 1.0 1.0} {0.5 0.5 0.5} {0.0 0.0 0.0}
     {color Segname {} blue}
     {color Conformation {all} blue}
     {color Molecule {0} blue}
+    {color Molecule {1} red}
+    {color Molecule {dump.lammpstrj} red}
     {color Structure {3_10_Helix} blue}
     {color Surface {Grasp} gray}
     {color Labels {Springs} orange}
@@ -572,11 +574,12 @@ color scale colors WBlk {1.0 1.0 1.0} {0.5 0.5 0.5} {0.0 0.0 0.0}
     set val [catch {eval $colcmd}]
   }
   color change rgb 0 0.0 0.0 1.0
+  color change rgb 1 1.0 0.10999999940395355 0.10000000149011612
   color change rgb 2 0.3499999940395355 0.3499999940395355 0.3499999940395355
   color change rgb 3 1.0 0.5 0.0
   color change rgb 4 1.0 1.0 0.0
   color change rgb 5 0.5 0.5 0.20000000298023224
-  color change rgb 6 0.6000000238418579 0.6000000238418579 0.6000000238418579
+  color change rgb 6 0.1899999976158142 0.18000000715255737 0.18000000715255737
   color change rgb 7 0.0 1.0 0.0
   color change rgb 9 1.0 0.6000000238418579 0.6000000238418579
   color change rgb 11 0.6499999761581421 0.0 0.6499999761581421

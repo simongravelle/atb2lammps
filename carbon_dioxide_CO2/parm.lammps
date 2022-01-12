@@ -1,0 +1,15 @@
+# LAMMPS parameter file 
+# Created using atb2lammps 
+# https://github.com/simongravelle/atb2lammps
+
+mass 1 15.9994 
+mass 2 12.011 
+
+pair_coeff 1 1 0.41229546 2.625854 
+pair_coeff 1 2 0.31783628 2.717064 
+pair_coeff 2 2 0.24501823 2.8114421 
+
+bond_coeff 1 1063.5756 1.17 
+
+angle_coeff 1 48.240032 180.0 
+
