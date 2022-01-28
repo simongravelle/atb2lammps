@@ -1,0 +1,50 @@
+# LAMMPS data file 
+# Created using atb2lammps 
+# https://github.com/simongravelle/atb2lammps
+
+6 atoms
+5 bonds
+7 angles
+3 dihedrals
+
+3 atom types
+3 bond types
+3 angle types
+1 dihedral types
+
+-25 25 xlo xhi
+-25 25 ylo yhi
+-25 25 zlo zhi
+
+Atoms
+
+1 1 3 -0.563 1.3289287 0.0002531631 -0.003496582 
+2 1 2 0.486 0.16770114 -0.0002486694 0.0020860124 
+3 1 2 -0.493 -1.2922909 -0.0001372916 0.002252138 
+4 1 1 0.19 -1.6652148 0.0001663727 -1.026675 
+5 1 1 0.19 -1.6693089 -0.8916874 0.5129545 
+6 1 1 0.19 -1.6690735 0.89165384 0.5128632 
+
+Bonds
+
+1 3 1 2 
+2 2 2 3 
+3 1 3 4 
+4 1 3 5 
+5 1 3 6 
+
+Angles
+
+1 3 1 2 3 
+2 2 2 3 4 
+3 2 2 3 5 
+4 2 2 3 6 
+5 1 4 3 5 
+6 1 4 3 6 
+7 1 5 3 6 
+
+Dihedrals
+
+1 1 1 2 3 4 
+2 1 1 2 3 5 
+3 1 1 2 3 6 
