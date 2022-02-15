@@ -4,7 +4,10 @@
   <img src="luteolin_C15H10O6/luoteolin.webp" align="right" width="30%"/>
 </a>
 
-Use Python and [Moltemplate](https://www.moltemplate.org/) to convert files from the [ATB repository](https://atb.uq.edu.au/) to LAMMPS format. Several examples are given here, including [luteolin](luteolin_C15H10O6/) (video on the right), [methane](methane_CH4), or [ethanol](ethanol_C2H5OH). 
+Use Python and [Moltemplate](https://www.moltemplate.org/) to convert 
+files from the [ATB repository](https://atb.uq.edu.au/) to LAMMPS format. 
+Several examples are given here, including [luteolin](luteolin_C15H10O6/) 
+(video on the right), [methane](methane_CH4), or [ethanol](ethanol_C2H5OH). 
 
 ## Use
 
@@ -13,7 +16,8 @@ Simply run atb2lammps.sh using bash:
 ```
 bash atb2lammps.sh KIR7_allatom_optimized_geometry.lt
 ```
-where KIR7_allatom_optimized_geometry.lt is the geometry file downloaded from the ATB. Then run LAMMPS: 
+where KIR7_allatom_optimized_geometry.lt is the geometry file downloaded from 
+the ATB. Then run LAMMPS: 
 
 ```
 lmp -in input.lammps
