@@ -1,0 +1,22 @@
+# LAMMPS data file 
+# Created using atb2lammps 
+# https://github.com/simongravelle/atb2lammps
+
+2 atoms
+1 bonds
+
+1 atom types
+1 bond types
+
+-25 25 xlo xhi
+-25 25 ylo yhi
+-25 25 zlo zhi
+
+Atoms
+
+1 1 1 0.0 -0.5526975 0.0 0.0 
+2 1 1 0.0 0.5526975 0.0 0.0 
+
+Bonds
+
+1 1 1 2 
