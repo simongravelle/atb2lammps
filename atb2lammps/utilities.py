@@ -344,13 +344,19 @@ def clean_moltemplate_files(folder):
     return nb_atoms, nb_bonds, nb_angles, nb_dihedrals, nb_impropers, \
         Atoms, Bonds, Angles, Dihedrals, Impropers, \
         filtered_mass, filtered_pair_coeff, filtered_bond, \
-        filtered_angle, filtered_dihedral, filtered_improper 
+        filtered_angle, filtered_dihedral, filtered_improper
 
 def write_lammps_data(molecule_folder):
     nb_atoms, nb_bonds, nb_angles, nb_dihedrals, nb_impropers, \
          Atoms, Bonds, Angles, Dihedrals, Impropers, \
          filtered_mass, filtered_pair_coeff, filtered_bond, \
          filtered_angle, filtered_dihedral, filtered_improper = clean_moltemplate_files(molecule_folder)
+    
+    # detect if molecule has partial charges
+    if (np.max(Atoms.T[3]) == 0) & (np.min(Atoms.T[3]) == 0):
+        no_charge = True
+    else:
+        no_charge = False
 
     f = open(molecule_folder + "/single_molecule.data", "w")
     f.write('# LAMMPS data file \n')
@@ -426,8 +432,9 @@ def write_lammps_data(molecule_folder):
             f.write('\n')
     f.close()
 
-def write_parm(molecule_folder):
+    return no_charge
 
+def write_parm(molecule_folder):
     nb_atoms, nb_bonds, nb_angles, nb_dihedrals, nb_impropers, \
          Atoms, Bonds, Angles, Dihedrals, Impropers, \
          filtered_mass, filtered_pair_coeff, filtered_bond, \
@@ -499,7 +506,7 @@ def write_parm(molecule_folder):
         f.write('\n') 
     f.close()
 
-def write_lammps_input(molecule_folder):
+def write_lammps_input(molecule_folder, no_charge):
     # Write lammps input file
     f = open(molecule_folder + "/single_molecule.lammps", "w")
     f.write('# LAMMPS input file \n')
@@ -514,8 +521,10 @@ def write_lammps_input(molecule_folder):
     f.write('improper_style harmonic\n')
     f.write('pair_style lj/cut/coul/long 14\n')
     f.write('kspace_style pppm 1e-5\n')
+    if no_charge:
+        f.write('kspace_modify gewald 1.0\n')
     f.write('special_bonds lj 0.0 0.0 0.5 coul 0.0 0.0 1.0 angle yes dihedral yes\n')
-    f.write('read_data data.lammps\n')
+    f.write('read_data single_molecule.data\n')
     f.write('include parm.lammps\n')
     f.write('minimize 1.0e-5 1.0e-7 1000 10000\n')
     f.write('reset_timestep 0\n')
