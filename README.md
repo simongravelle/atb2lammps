@@ -7,8 +7,8 @@
 Use Python and [Moltemplate](https://www.moltemplate.org/) to convert 
 files from the [ATB repository](https://atb.uq.edu.au/) to LAMMPS format. 
 
-Several examples are given here, including [luteolin](luteolin_C15H10O6/),
-[methane](methane_CH4), or [ethanol](ethanol_C2H5OH). 
+Several examples are given here, including [luteolin](molecules/luteolin_C15H10O6/),
+[methane](molecules/methane_CH4), or [ethanol](molecules/ethanol_C2H5OH). 
 
 ## How to add a new molecule
 
