@@ -1,43 +1,24 @@
 # ATB to LAMMPS file converter
 
 <a href="webp">
-  <img src="luteolin_C15H10O6/luoteolin.webp" align="right" width="30%"/>
+  <img src="molecules/luteolin_C15H10O6/luoteolin.webp" align="right" width="30%"/>
 </a>
 
 Use Python and [Moltemplate](https://www.moltemplate.org/) to convert 
 files from the [ATB repository](https://atb.uq.edu.au/) to LAMMPS format. 
+
 Several examples are given here, including [luteolin](luteolin_C15H10O6/) 
 (video on the right), [methane](methane_CH4), or [ethanol](ethanol_C2H5OH). 
 
-## Use
+## How to add a new molecule
 
-### Extract system.lt file
+### Save the files from the ATB
 
-```
-python3 extract_system_lt.py KIR7_allatom_optimized_geometry.lt
-```
+Within *molecules/*, create a folder with the format *name_formula/*, 
+where name is the molecule name, and formula its chemical formula.
 
-### Execute moltemplate
+Save the two *.lt* files from the atb within *molecules/*.
 
-```
-moltemplate.sh system.lt
-```
+### Run atb2lammps
 
-### Create clean system
-
-```
-python3 clean_system.py
-```
-
-### Delete extra files
-
-```
-rm -r output_ttree
-rm system.*
-```
-
-### run LAMMPS
-
-```
-lmp -in input.lammps
-```
+From the *atb2lammps/* folder, run *execute_atp2lammps.py* using Python.
