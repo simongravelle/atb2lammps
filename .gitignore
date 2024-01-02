@@ -1,4 +1,5 @@
 
 **/dump.lammpstrj
 **/log.lammps
-
+**/*.pyc
+**/*Data\ *
