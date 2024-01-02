@@ -3,3 +3,5 @@
 **/log.lammps
 **/*.pyc
 **/*Data\ *
+**/*In\ *
+**/ttre_*

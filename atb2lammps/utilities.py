@@ -531,6 +531,7 @@ def write_lammps_input(molecule_folder, no_charge):
     f.write('fix mynvt all nvt temp 300 300 100\n')
     f.write('timestep 1.0\n')
     f.write('dump mydmp all atom 1000 dump.lammpstrj\n')
+    f.write('dump myimg all image 2000 molecule.*.ppm type type size 640 640 box no 0.1\n')
     f.write('thermo 1000\n')
-    f.write('run 50000\n')
+    f.write('run 6000\n')
     f.close()
