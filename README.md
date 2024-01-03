@@ -1,7 +1,7 @@
 # ATB-to-LAMMPS file converter
 
 <a href="webp">
-  <img src="molecules/luteolin_C15H10O6/luoteolin.png" align="right" width="30%"/>
+  <img src="molecules/luteolin_C15H10O6/luoteolin.png" align="right" width="40%"/>
 </a>
 
 Use Python and [Moltemplate](https://www.moltemplate.org/) to convert 
