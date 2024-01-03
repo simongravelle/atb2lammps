@@ -1,14 +1,11 @@
 # ATB-to-LAMMPS file converter
 
 <a href="webp">
-  <img src="molecules/luteolin_C15H10O6/luoteolin.webp" align="right" width="30%"/>
+  <img src="molecules/luteolin_C15H10O6/luoteolin.png" align="right" width="30%"/>
 </a>
 
 Use Python and [Moltemplate](https://www.moltemplate.org/) to convert 
 files from the [ATB repository](https://atb.uq.edu.au/) to LAMMPS format. 
-
-Several examples are given here, including [luteolin](molecules/luteolin_C15H10O6/),
-[methane](molecules/methane_CH4), or [ethanol](molecules/ethanol_C2H5OH). 
 
 ## Full molecule list
 
