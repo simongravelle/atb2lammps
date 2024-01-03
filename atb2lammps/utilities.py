@@ -346,7 +346,7 @@ def clean_moltemplate_files(folder):
         filtered_mass, filtered_pair_coeff, filtered_bond, \
         filtered_angle, filtered_dihedral, filtered_improper
 
-def write_lammps_data(molecule_folder):
+def write_lammps_data(molecule_folder, molecule_name):
     nb_atoms, nb_bonds, nb_angles, nb_dihedrals, nb_impropers, \
          Atoms, Bonds, Angles, Dihedrals, Impropers, \
          filtered_mass, filtered_pair_coeff, filtered_bond, \
@@ -358,7 +358,7 @@ def write_lammps_data(molecule_folder):
     else:
         no_charge = False
 
-    f = open(molecule_folder + "/single_molecule.data", "w")
+    f = open(molecule_folder + "/" + molecule_name + ".data", "w")
     f.write('# LAMMPS data file \n')
     f.write('# Created using atb2lammps \n')
     f.write('# https://github.com/simongravelle/atb2lammps\n\n')
@@ -530,8 +530,7 @@ def write_parm(molecule_folder):
     f.close()
     return atom_list
 
-def write_lammps_input(molecule_folder, no_charge, atom_list):
-
+def write_lammps_input(molecule_folder, no_charge, atom_list, molecule_name):
 
     acolor = ""
     adiam = ""
@@ -557,7 +556,7 @@ def write_lammps_input(molecule_folder, no_charge, atom_list):
     if no_charge:
         f.write('kspace_modify gewald 1.0\n')
     f.write('special_bonds lj 0.0 0.0 0.5 coul 0.0 0.0 1.0 angle yes dihedral yes\n')
-    f.write('read_data single_molecule.data\n')
+    f.write('read_data ' + molecule_name + '.data\n')
     f.write('include parm.lammps\n')
     f.write('minimize 1.0e-5 1.0e-7 1000 10000\n')
     f.write('reset_timestep 0\n')

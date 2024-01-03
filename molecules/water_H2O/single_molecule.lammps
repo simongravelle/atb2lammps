@@ -12,7 +12,7 @@ improper_style harmonic
 pair_style lj/cut/coul/long 14
 kspace_style pppm 1e-5
 special_bonds lj 0.0 0.0 0.5 coul 0.0 0.0 1.0 angle yes dihedral yes
-read_data single_molecule.data
+read_data water.data
 include parm.lammps
 minimize 1.0e-5 1.0e-7 1000 10000
 reset_timestep 0
