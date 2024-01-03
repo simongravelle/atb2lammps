@@ -1,4 +1,4 @@
-# ATB to LAMMPS file converter
+# ATB-to-LAMMPS file converter
 
 <a href="webp">
   <img src="molecules/luteolin_C15H10O6/luoteolin.webp" align="right" width="30%"/>
@@ -9,6 +9,20 @@ files from the [ATB repository](https://atb.uq.edu.au/) to LAMMPS format.
 
 Several examples are given here, including [luteolin](molecules/luteolin_C15H10O6/),
 [methane](molecules/methane_CH4), or [ethanol](molecules/ethanol_C2H5OH). 
+
+## Full molecule list
+
+- [nitrogen](molecules/nitrogen_N2)
+- [methane](molecules/methane_CH4)
+- [carbondioxide](molecules/carbondioxide_CO2)
+- [decane](molecules/decane_C10H22)
+- [luteolin](molecules/luteolin_C15H10O6)
+- [ethane](molecules/ethane_C2H6)
+- [acetronitrice](molecules/acetronitrice_C2H3N)
+- [water](molecules/water_H2O)
+- [ethanol](molecules/ethanol_C2H5OH)
+- [toluene](molecules/toluene_C7H8)
+- [propane](molecules/propane_C3H8)
 
 ## How to add a new molecule
 

@@ -19,6 +19,8 @@ reset_timestep 0
 fix mynvt all nvt temp 300 300 100
 timestep 1.0
 dump mydmp all atom 1000 dump.lammpstrj
-dump myimg all image 2000 molecule.*.ppm type type size 640 640 box no 0.1
+dump myimg all image 2000 molecule.*.ppm type type & 
+size 640 640 box no 0.1 zoom 20 shiny 0.1
+dump_modify myimg acolor * red/white/white/red/gray/red
 thermo 1000
 run 6000

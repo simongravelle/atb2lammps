@@ -434,11 +434,34 @@ def write_lammps_data(molecule_folder):
 
     return no_charge
 
+# name, mass, diameter, color
+atom_properties = [["H", 1, 0.8, "white"],
+                   ["C", 12, 2, "gray"],
+                   ["N", 14, 2, "blue"],
+                   ["O", 16, 2, "red"]]
+
+def name_from_mass(mass):
+    name = None
+    for atom in atom_properties:
+        aname, amass, adiameter, acolor = atom
+        if amass == np.round(mass):
+            name = aname
+            diameter = adiameter
+            color = acolor
+    if name is None:
+         print("unknown atom of mass", mass)
+    return name, diameter, color
+
 def write_parm(molecule_folder):
     nb_atoms, nb_bonds, nb_angles, nb_dihedrals, nb_impropers, \
          Atoms, Bonds, Angles, Dihedrals, Impropers, \
          filtered_mass, filtered_pair_coeff, filtered_bond, \
          filtered_angle, filtered_dihedral, filtered_improper = clean_moltemplate_files(molecule_folder)
+
+    atom_list = []
+    for _, mass in filtered_mass:
+        name, diameter, color = name_from_mass(mass)
+        atom_list.append([name, diameter, color])
 
     # Write parameter file
     f = open(molecule_folder + "/parm.lammps", "w")
@@ -505,8 +528,18 @@ def write_parm(molecule_folder):
             f.write('\n')
         f.write('\n') 
     f.close()
+    return atom_list
 
-def write_lammps_input(molecule_folder, no_charge):
+def write_lammps_input(molecule_folder, no_charge, atom_list):
+
+
+    acolor = ""
+    adiam = ""
+    for atom in atom_list:
+        name, diameter, color = atom
+        acolor += color + "/"
+        adiam += str(diameter) + " "
+
     # Write lammps input file
     f = open(molecule_folder + "/single_molecule.lammps", "w")
     f.write('# LAMMPS input file \n')
@@ -531,7 +564,36 @@ def write_lammps_input(molecule_folder, no_charge):
     f.write('fix mynvt all nvt temp 300 300 100\n')
     f.write('timestep 1.0\n')
     f.write('dump mydmp all atom 1000 dump.lammpstrj\n')
-    f.write('dump myimg all image 2000 molecule.*.ppm type type size 640 640 box no 0.1\n')
+    f.write('dump myimg all image 2000 molecule.*.ppm type type & \n')
+    f.write('size 640 640 box no 0.1 zoom 20 shiny 0.1\n')
+    f.write('dump_modify myimg acolor * ' + acolor[:-1]  + '\n') # + ' adiam ' + adiam[:-1] + '\n')
     f.write('thermo 1000\n')
     f.write('run 6000\n')
     f.close()
+
+def rewrite_README(molecule_list):
+    r = open("../README.md", "r")
+    w = open("../new-README.md", "w")
+    write_molecule = False
+    write_line = True
+    for line in r:
+        if "How to add" in line:
+            write_line = True
+        if write_line:
+            w.write(line)
+        if "Full molecule list" in line:
+            write_molecule = True
+            write_line = False
+        if write_molecule:
+            w.write("\n")
+            for molecule in molecule_list:
+                w.write("- [" + molecule[0] + "](molecules/" + molecule[0] + "_" + molecule[1] + ")" +"\n")
+            w.write("\n")
+            write_molecule = False
+    r.close()
+    w.close()
+
+    shutil.move("../new-README.md", "../README.md")
+
+
+
