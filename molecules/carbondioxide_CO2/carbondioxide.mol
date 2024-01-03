@@ -1,0 +1,34 @@
+# LAMMPS molecule file for carbondioxide 
+# Created using atb2lammps 
+# https://github.com/simongravelle/atb2lammps
+
+3 atoms
+2 bonds
+1 angles
+
+Coords
+
+1 -1.1691262 8.60921e-05 0.0 
+2 -1.4797e-06 -0.0001808571 0.0 
+3 1.1691276 8.74999e-05 0.0 
+
+Types
+
+1 1 
+2 2 
+3 1 
+
+Charges
+
+1 -0.376 
+2 0.752 
+3 -0.376 
+
+Bonds
+
+1 1 1 2 
+2 1 2 3 
+
+Angles
+
+1 1 1 2 3 

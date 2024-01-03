@@ -1,0 +1,25 @@
+# LAMMPS molecule file for nitrogen 
+# Created using atb2lammps 
+# https://github.com/simongravelle/atb2lammps
+
+2 atoms
+1 bonds
+
+Coords
+
+1 -0.5526975 0.0 0.0 
+2 0.5526975 0.0 0.0 
+
+Types
+
+1 1 
+2 1 
+
+Charges
+
+1 0.0 
+2 0.0 
+
+Bonds
+
+1 1 1 2 

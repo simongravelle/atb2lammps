@@ -346,6 +346,91 @@ def clean_moltemplate_files(folder):
         filtered_mass, filtered_pair_coeff, filtered_bond, \
         filtered_angle, filtered_dihedral, filtered_improper
 
+def write_lammps_mol(molecule_folder, molecule_name):
+    nb_atoms, nb_bonds, nb_angles, nb_dihedrals, nb_impropers, \
+         Atoms, Bonds, Angles, Dihedrals, Impropers, \
+         filtered_mass, filtered_pair_coeff, filtered_bond, \
+         filtered_angle, filtered_dihedral, filtered_improper = clean_moltemplate_files(molecule_folder)
+
+    f = open(molecule_folder + "/" + molecule_name + ".mol", "w")
+    f.write('# LAMMPS molecule file for ' + molecule_name + ' \n')
+    f.write('# Created using atb2lammps \n')
+    f.write('# https://github.com/simongravelle/atb2lammps\n\n')
+    if nb_atoms>0:
+        f.write(str(nb_atoms)+' atoms\n')
+    if nb_bonds>0:
+        f.write(str(nb_bonds)+' bonds\n')
+    if nb_angles>0:
+        f.write(str(nb_angles)+' angles\n')
+    if nb_dihedrals>0:
+        f.write(str(nb_dihedrals)+' dihedrals\n')
+    if nb_impropers>0:
+        f.write(str(nb_impropers)+' impropers\n')
+    if nb_atoms>0:
+        f.write('\n')
+        f.write('Coords\n')
+        f.write('\n')
+        for nlin in Atoms:
+            for cpt_col, col in enumerate(nlin):
+                if cpt_col == 0:
+                    f.write(str(np.int32(col))+' ')
+                elif cpt_col > 3:
+                    f.write(str(np.float32(col))+' ')
+            f.write('\n')
+        f.write('\n')
+        f.write('Types\n')
+        f.write('\n')
+        for nlin in Atoms:
+            for cpt_col, col in enumerate(nlin):
+                if cpt_col == 0:
+                    f.write(str(np.int32(col))+' ')
+                elif cpt_col == 2:
+                    f.write(str(np.int32(col))+' ')             
+            f.write('\n')
+        f.write('\n')
+        f.write('Charges\n')
+        f.write('\n')
+        for nlin in Atoms:
+            for cpt_col, col in enumerate(nlin):
+                if cpt_col == 0:
+                    f.write(str(np.int32(col))+' ')
+                elif cpt_col == 3:
+                    f.write(str(np.float32(col))+' ')             
+            f.write('\n')
+    if nb_bonds>0:
+        f.write('\n')
+        f.write('Bonds\n')
+        f.write('\n')
+        for nlin in Bonds:
+            for cpt_col, col in enumerate(nlin):
+                f.write(str(np.int32(col))+' ')
+            f.write('\n')
+    if nb_angles>0:
+        f.write('\n')
+        f.write('Angles\n')
+        f.write('\n')
+        for nlin in Angles:
+            for cpt_col, col in enumerate(nlin):
+                f.write(str(np.int32(col))+' ')
+            f.write('\n')
+    if nb_dihedrals>0:
+        f.write('\n')
+        f.write('Dihedrals\n')
+        f.write('\n')
+        for nlin in Dihedrals:
+            for cpt_col, col in enumerate(nlin):
+                f.write(str(np.int32(col))+' ')
+            f.write('\n')
+    if nb_impropers>0:
+        f.write('\n')
+        f.write('Impropers\n')
+        f.write('\n')
+        for nlin in Impropers:
+            for cpt_col, col in enumerate(nlin):
+                f.write(str(np.int32(col))+' ')
+            f.write('\n')
+    f.close()
+
 def write_lammps_data(molecule_folder, molecule_name):
     nb_atoms, nb_bonds, nb_angles, nb_dihedrals, nb_impropers, \
          Atoms, Bonds, Angles, Dihedrals, Impropers, \
@@ -359,7 +444,7 @@ def write_lammps_data(molecule_folder, molecule_name):
         no_charge = False
 
     f = open(molecule_folder + "/" + molecule_name + ".data", "w")
-    f.write('# LAMMPS data file \n')
+    f.write('# LAMMPS data file for ' + molecule_name + ' \n')
     f.write('# Created using atb2lammps \n')
     f.write('# https://github.com/simongravelle/atb2lammps\n\n')
     if nb_atoms>0:
