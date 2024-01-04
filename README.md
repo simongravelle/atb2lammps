@@ -7,6 +7,14 @@
 Use Python and [Moltemplate](https://www.moltemplate.org/) to convert 
 files from the [ATB repository](https://atb.uq.edu.au/) to LAMMPS format. 
 
+For each molecule, a LAMMPS [data file](https://docs.lammps.org/read_data.html),
+a LAMMPS [molecule file](https://docs.lammps.org/molecule.html),
+and a LAMMPS parameter file are provided.
+A minimal LAMMPS input file is also provided.
+
+If you are not familiar with [LAMMPS](https://www.lammps.org/),
+you can find tutorials [here](https://lammpstutorials.github.io/).
+
 ## Full molecule list
 
 - [nitrogen](molecules/nitrogen_N2)
