@@ -17,6 +17,9 @@ you can find tutorials [here](https://lammpstutorials.github.io/).
 
 ## Full molecule list
 
+Any molecule from the [ATB repository](https://atb.uq.edu.au/)
+could in principle be added here.
+
 - [nitrogen](molecules/nitrogen_N2)
 - [methane](molecules/methane_CH4)
 - [carbondioxide](molecules/carbondioxide_CO2)
