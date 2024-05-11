@@ -17,13 +17,11 @@ you can find tutorials [here](https://lammpstutorials.github.io/).
 
 ## Full molecule list
 
-Any molecule from the [ATB repository](https://atb.uq.edu.au/)
-could in principle be added here.
-
 - [nitrogen](molecules/nitrogen_N2)
 - [methane](molecules/methane_CH4)
 - [carbondioxide](molecules/carbondioxide_CO2)
 - [decane](molecules/decane_C10H22)
+- [peg](molecules/peg_C28H58O15)
 - [luteolin](molecules/luteolin_C15H10O6)
 - [ethane](molecules/ethane_C2H6)
 - [acetronitrice](molecules/acetronitrice_C2H3N)
