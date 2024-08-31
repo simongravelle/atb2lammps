@@ -35,7 +35,8 @@ you can find tutorials [here](https://lammpstutorials.github.io/).
 ### Save the files from the ATB
 
 Within *molecules/*, create a folder with the format *name_formula/*, 
-where name is the molecule name, and formula its chemical formula.
+where *name* is the molecule name, and *formula* its chemical formula
+(something like C15H10O6).
 
 Save the two *.lt* files from the atb within *molecules/*.
 
