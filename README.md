@@ -28,6 +28,7 @@ you can find tutorials [here](https://lammpstutorials.github.io/).
 - [methane](molecules/methane_CH4)
 - [acetronitrice](molecules/acetronitrice_C2H3N)
 - [nitrogen](molecules/nitrogen_N2)
+- [hexaethyleneglycol](molecules/hexaethyleneglycol_C12H26O7)
 - [decane](molecules/decane_C10H22)
 - [ethane](molecules/ethane_C2H6)
 
