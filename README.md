@@ -17,20 +17,21 @@ you can find tutorials [here](https://lammpstutorials.github.io/).
 
 ## Full molecule list
 
-- [ethanol](molecules/ethanol_C2H5OH)
-- [pentaethyleneglycol](molecules/pentaethyleneglycol_C10H22O6)
+- [nitrogen](molecules/nitrogen_N2)
 - [luteolin](molecules/luteolin_C15H10O6)
+- [ethane](molecules/ethane_C2H6)
+- [acetronitrice](molecules/acetronitrice_C2H3N)
+- [hexaethyleneglycol](molecules/hexaethyleneglycol_C12H26O7)
+- [glycerol](molecules/glycerol_C3H8O3)
+- [pentaethyleneglycol](molecules/pentaethyleneglycol_C10H22O6)
+- [water](molecules/water_H2O)
 - [carbondioxide](molecules/carbondioxide_CO2)
+- [ethanol](molecules/ethanol_C2H5OH)
 - [toluene](molecules/toluene_C7H8)
+- [methane](molecules/methane_CH4)
 - [propane](molecules/propane_C3H8)
 - [peg](molecules/peg_C28H58O15)
-- [water](molecules/water_H2O)
-- [methane](molecules/methane_CH4)
-- [acetronitrice](molecules/acetronitrice_C2H3N)
-- [nitrogen](molecules/nitrogen_N2)
-- [hexaethyleneglycol](molecules/hexaethyleneglycol_C12H26O7)
 - [decane](molecules/decane_C10H22)
-- [ethane](molecules/ethane_C2H6)
 
 ## How to add a new molecule
 
