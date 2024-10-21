@@ -18,6 +18,7 @@ you can find tutorials [here](https://lammpstutorials.github.io/).
 ## Full molecule list
 
 - [nitrogen](molecules/nitrogen_N2)
+- [octadecene](molecules/octadecene_C18H36)
 - [luteolin](molecules/luteolin_C15H10O6)
 - [ethane](molecules/ethane_C2H6)
 - [acetronitrice](molecules/acetronitrice_C2H3N)
