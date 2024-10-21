@@ -26,6 +26,7 @@ you can find tutorials [here](https://lammpstutorials.github.io/).
 - [glycerol](molecules/glycerol_C3H8O3)
 - [pentaethyleneglycol](molecules/pentaethyleneglycol_C10H22O6)
 - [water](molecules/water_H2O)
+- [octadecane](molecules/octadecane_C18H38)
 - [carbondioxide](molecules/carbondioxide_CO2)
 - [ethanol](molecules/ethanol_C2H5OH)
 - [toluene](molecules/toluene_C7H8)
