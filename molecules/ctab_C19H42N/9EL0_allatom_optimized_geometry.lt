@@ -1,0 +1,565 @@
+#----------------------------TITLE -----------------------------------------------------------------------------------------
+#   1-(trimethyl-$l^{5}-azanyl)hexadecane
+#
+# This file was generated at 05:40 on 2025-02-06 by
+#
+#                  Automatic Topology Builder  
+#
+#                   REVISION 2025-01-17 09:57:26
+#---------------------------------------------------------------------------------------------------------------------------
+# Authors     : Martin Stroet, Bertrand Caron, Alpeshkumar K. Malde, Thomas Lee, Alan E. Mark
+#
+# Institute   : Molecular Dynamics group, 
+#               School of Chemistry and Molecular Biosciences (SCMB),
+#               The University of Queensland, QLD 4072, Australia
+# URL         : https://atb.uq.edu.au
+# Citations   : 1. Malde AK, Zuo L, Breeze M, Stroet M, Poger D, Nair PC, Oostenbrink C, Mark AE.
+#                  An Automated force field Topology Builder (ATB) and repository: version 1.0.
+#                  Journal of Chemical Theory and Computation, 2011, 7, 4026-4037.
+#               2. Stroet M, Caron B, Visscher K, Geerke D, Malde AK, Mark AE.
+#                  Automated Topology Builder version 3.0: Prediction of solvation free enthalpies in water and hexane.
+#                  DOI:10.1021/acs.jctc.8b00768
+#
+# Disclaimer  : 
+#      While every effort has been made to ensure the accuracy and validity of parameters provided below
+#      the assignment of parameters is being based on an automated procedure combining data provided by a
+#      given user as well as calculations performed using third party software. They are provided as a guide.
+#      The authors of the ATB cannot guarantee that the parameters are complete or that the parameters provided
+#      are appropriate for use in any specific application. Users are advised to treat these parameters with discretion
+#      and to perform additional validation tests for their specific application if required. Neither the authors
+#      of the ATB or The University of Queensland except any responsibly for how the parameters may be used.
+#
+# Release notes and warnings: 
+#  (1) The topology is based on a set of atomic coordinates and other data provided by the user after
+#      after quantum mechanical optimization of the structure using different levels of theory depending on
+#      the nature of the molecule.
+#  (2) In some cases the automatic bond, bond angle and dihedral type assignment is ambiguous.
+#      In these cases alternative type codes are provided at the end of the line.
+#  (3) While bonded parameters are taken where possible from the nominated force field non-standard bond, angle and dihedral
+#      type code may be incorporated in cases where an exact match could not be found. These are marked as "non-standard"
+#      or "uncertain" in comments.
+#  (4) In some cases it is not possible to assign an appropriate parameter automatically. "%%" is used as a place holder
+#      for those fields that could not be determined automatically. The parameters in these fields must be assigned manually
+#      before the file can be used.
+#---------------------------------------------------------------------------------------------------------------------------
+# Input Structure : 9EL0_allatom_optimized_geometry.lt
+# Output          : ALL ATOM topology
+#	Use in conjunction with the corresponding all atom PDB file.
+#---------------------------------------------------------------------------------------------------------------------------
+# Citing this topology file
+# ATB molid: 1738014
+# ATB Topology Hash: 004ba
+#---------------------------------------------------------------------------------------------------------------------------
+# Initial Guess Topology Generation:
+# The topology was generated from AM1 optimized geometry and MOPAC charges.
+# Bonded and van der Waals parameters were taken from the GROMOS 54A7 parameter set.
+#---------------------------------------------------------------------------------------------------------------------------
+#| Instructions
+#| ------------
+#| 
+#| This file can be used as a building block to create LAMMPS systems
+#| with the moltemplate.sh program (available at http://www.moltemplate.org).
+#| Moltemplate provides a flexible means to build up complex system from
+#| molecular template and force field files while avoiding clashes in type
+#| numbers for atoms, bonds, etc.
+#| 
+#| Moltemplate takes a LAMMPS-template (LT) file as input, which may itself call
+#| on other LT files with an `import file.lt` statement, and generates a LAMMPS
+#| input script (typically broken into multiple subscripts) and data file.
+#| 
+#| The following is a simple example of a moltemplate script with the file
+#| `GROMOS_54A7_ATB.lt` defining the forcefield `GROMOS_54A7_ATB`, and
+#| the `9EL0_allatom_optimized_geometry.lt` file defining the molecule `9EL0`.
+#| (Typically "9EL0" is a 4-letter code, such as "54A7", and
+#| "9EL0_allatom_optimized_geometry.lt" is something like "54A7_allatom_optimized_geometry.lt".)
+#| 
+#| ```
+#| # system.lt
+#| # simulation of a single molecule in a box of size 50x50x50 Angstroms^3
+#| 
+#| write_once("Data Boundary") {
+#|     -25.0 25.0 xlo xhi
+#|     -25.0 25.0 ylo yhi
+#|     -25.0 25.0 zlo zhi
+#| }
+#| 
+#| write_once("In Init") {
+#|   # a variable named `cutoff` is required by GROMOS_54A7_ATB.lt
+#|   variable cutoff equal 14.0 # Angstroms
+#|   boundary p p p
+#| }
+#| 
+#| # import the forcefield file
+#| import "GROMOS_54A7_ATB.lt"
+#| # import molecule building block file
+#| import "9EL0_allatom_optimized_geometry.lt"
+#| 
+#| # create a single copy of this molecule at position 0,0,0
+#| mol1 = new 9EL0.move(0.0,0.0,0.0)
+#| ```
+#| 
+#| See the moltemplate manual for a detailed description of the LT file format.
+#| 
+#| The file `system.lt` can be converted to a LAMMPS
+#| input `system.in` and data file `system.data` with the
+#| following shell command, assuming that all three LT files
+#| `system.lt`, `GROMOS_54A7_ATB.lt` and `9EL0_allatom_optimized_geometry.lt`
+#| are located in the current directory:
+#| 
+#| ```
+#| moltemplate.sh system.lt \
+#|     -overlay-bonds -overlay-angles -overlay-dihedrals -overlay-impropers
+#| ```
+#| (The `-overlay-*` flags are required for cases where multiple bonded
+#| interactions involve the same atoms.)
+#| 
+#| To run a LAMMPS simulation, you need to create a file (eg "run.in")
+#| containing links to the coordinate, topology, and force-field information
+#| created by moltemplate.sh.  Then you can run LAMMPS ("lmp_mpi") this way:
+#| ```
+#|   lmp_mpi -i run.in
+#| ```
+#| At a minimum, the file should probably contain the following information:
+#| ```
+#| # "run.in" file
+#| # Read the files generated by running moltemplate.sh:
+#| include   system.in.init      # I assume your main LT file is named system.lt
+#| read_data system.data         # If not, change "system" to the name of this
+#| include   system.in.settings  # file (ie. the one you ran moltemplate.sh on).
+#| # Simulate the system at 300 degrees Kelvin, saving every 1000 timesteps.
+#| minimize 1.0e-3 1.0e-5 100000 400000   # minimization beforehand is optional
+#| dump mydump all custom 1000 traj_nvt.lammpstrj id mol type x y z ix iy iz
+#| fix myfxnvt all nvt temp 300.0 300.0 100.0
+#| thermo        100             # Report status every 100 timesteps.
+#| thermo_style  custom step temp pe ke etotal epair ebond eangle edihed
+#| timestep 1.0                  # The timestep might need to be adjusted.
+#| run 100000                    # Simulation duration (in timesteps)
+#| ```
+#| 
+#| 
+9EL0 inherits GROMOS_54A7_ATB {
+    write("Data Atoms"){
+        $atom:H42    $mol:... @atom:HC      0.074000  1.1121453518E+01 -7.0968390460E-01  3.5777465410E-01
+        $atom:C20    $mol:... @atom:C      -0.215000  1.0208855643E+01 -1.7160190060E-01  7.1288539740E-01
+        $atom:H40    $mol:... @atom:HC      0.074000  1.0072185326E+01 -3.8707736580E-01  1.8002501426E+00
+        $atom:H41    $mol:... @atom:HC      0.074000  1.0377486712E+01  9.2611530380E-01  5.9304412960E-01
+        $atom:C19    $mol:... @atom:C      -0.158000  9.0014356603E+00 -6.1330879400E-01 -7.2602615900E-02
+        $atom:H38    $mol:... @atom:HC      0.078000  9.1572589816E+00 -3.8915786070E-01 -1.1608685377E+00
+        $atom:H39    $mol:... @atom:HC      0.078000  8.8777024053E+00 -1.7246926509E+00  2.0804399000E-02
+        $atom:C18    $mol:... @atom:C      -0.158000  7.7430390210E+00  7.6808508300E-02  4.0945440420E-01
+        $atom:H36    $mol:... @atom:HC      0.080000  7.5971302966E+00 -1.3380998660E-01  1.5021375792E+00
+        $atom:H37    $mol:... @atom:HC      0.080000  7.8564532080E+00  1.1873907435E+00  2.9909337840E-01
+        $atom:C17    $mol:... @atom:C      -0.158000  6.5269758076E+00 -3.8986261410E-01 -3.6168834290E-01
+        $atom:H34    $mol:... @atom:HC      0.079000  6.6449115287E+00 -1.2808681770E-01 -1.4458987777E+00
+        $atom:H35    $mol:... @atom:HC      0.079000  6.4478717460E+00 -1.5075878871E+00 -2.9833173430E-01
+        $atom:C16    $mol:... @atom:C      -0.158000  5.2603513155E+00  2.3852589210E-01  1.7905008430E-01
+        $atom:H32    $mol:... @atom:HC      0.080000  5.1664284405E+00  7.4252275000E-03  1.2730223063E+00
+        $atom:H33    $mol:... @atom:HC      0.080000  5.3204984151E+00  1.3543208405E+00  8.0197471700E-02
+        $atom:C15    $mol:... @atom:C      -0.158000  4.0380126888E+00 -2.7372847390E-01 -5.5248569970E-01
+        $atom:H30    $mol:... @atom:HC      0.080000  4.1153231335E+00 -1.8360868800E-02 -1.6420520819E+00
+        $atom:H31    $mol:... @atom:HC      0.080000  3.9992208003E+00 -1.3926736989E+00 -4.7750134960E-01
+        $atom:C14    $mol:... @atom:C      -0.158000  2.7665460870E+00  3.1577454070E-01  2.1211620200E-02
+        $atom:H28    $mol:... @atom:HC      0.081000  2.7340425158E+00  1.3389278820E-01  1.1283291944E+00
+        $atom:H29    $mol:... @atom:HC      0.081000  2.7655540041E+00  1.4275666911E+00 -1.3125788900E-01
+        $atom:C13    $mol:... @atom:C      -0.159000  1.5428422142E+00 -2.9309168780E-01 -6.2952439140E-01
+        $atom:H26    $mol:... @atom:HC      0.080000  1.5751402425E+00 -1.1330402560E-01 -1.7364160098E+00
+        $atom:H27    $mol:... @atom:HC      0.080000  1.5669446448E+00 -1.4044412682E+00 -4.7432982650E-01
+        $atom:C12    $mol:... @atom:C      -0.152000  2.5322362880E-01  2.5737588460E-01 -5.6653200800E-02
+        $atom:H24    $mol:... @atom:HC      0.068000 -5.7080843750E-01 -4.8378992800E-01 -2.3937650810E-01
+        $atom:H25    $mol:... @atom:HC      0.068000  3.5267226890E-01  3.7327480470E-01  1.0554905996E+00
+        $atom:C8     $mol:... @atom:C      -0.162000 -1.2953138560E-01  1.5855861145E+00 -6.7646647090E-01
+        $atom:H13    $mol:... @atom:HC      0.088000  7.6765986460E-01  2.2621676215E+00 -6.8386433830E-01
+        $atom:H14    $mol:... @atom:HC      0.088000 -4.3071068360E-01  1.4252848031E+00 -1.7455648143E+00
+        $atom:C6     $mol:... @atom:C      -0.158000 -1.2481368256E+00  2.2828006233E+00  6.8451645500E-02
+        $atom:H11    $mol:... @atom:HC      0.090000 -9.2588141230E-01  2.4809956248E+00  1.1256195723E+00
+        $atom:H12    $mol:... @atom:HC      0.090000 -1.4395537076E+00  3.2783960242E+00 -4.1278586690E-01
+        $atom:C4     $mol:... @atom:C      -0.158000 -2.5315192489E+00  1.4782629365E+00  7.9797609900E-02
+        $atom:H7     $mol:... @atom:HC      0.065000 -2.7900557231E+00  1.1946181172E+00 -9.7555894240E-01
+        $atom:H8     $mol:... @atom:HC      0.065000 -2.3583202640E+00  5.2544716560E-01  6.4800804100E-01
+        $atom:C2     $mol:... @atom:C      -0.172000 -3.6761417870E+00  2.2564911641E+00  6.9989173450E-01
+        $atom:H3     $mol:... @atom:HC      0.099000 -3.2568855959E+00  3.0730781348E+00  1.3506151346E+00
+        $atom:H4     $mol:... @atom:HC      0.099000 -4.2690780105E+00  2.7606972302E+00 -1.0791969730E-01
+        $atom:C1     $mol:... @atom:C      -0.159000 -4.5964176728E+00  1.4176878512E+00  1.5612597462E+00
+        $atom:H1     $mol:... @atom:HC      0.103000 -5.1997872647E+00  2.1138145786E+00  2.2077238164E+00
+        $atom:H2     $mol:... @atom:HC      0.103000 -3.9904839329E+00  7.7410315030E-01  2.2526674758E+00
+        $atom:C3     $mol:... @atom:C      -0.176000 -5.5826237515E+00  5.6080474040E-01  7.8924492740E-01
+        $atom:H5     $mol:... @atom:HC      0.101000 -6.0516715374E+00  1.1726910058E+00 -2.6399578800E-02
+        $atom:H6     $mol:... @atom:HC      0.101000 -6.3987996418E+00  2.4304893970E-01  1.4913643598E+00
+        $atom:C5     $mol:... @atom:CPos   -0.127000 -4.8843024087E+00 -6.5452761540E-01  1.9414495600E-01
+        $atom:H9     $mol:... @atom:HC      0.142000 -4.2291219655E+00 -1.1398641012E+00  9.7432836350E-01
+        $atom:H10    $mol:... @atom:HC      0.142000 -4.2311524295E+00 -3.1670591980E-01 -6.6338238760E-01
+        $atom:N7     $mol:... @atom:NL      0.028000 -5.8013866335E+00 -1.7291642481E+00 -3.4272045460E-01
+        $atom:C9     $mol:... @atom:CPos   -0.187000 -4.9769331698E+00 -2.7137061603E+00 -1.1089032739E+00
+        $atom:H15    $mol:... @atom:HC      0.141000 -4.5310168463E+00 -2.2092832738E+00 -2.0070614126E+00
+        $atom:H16    $mol:... @atom:HC      0.141000 -5.6282213421E+00 -3.5642360525E+00 -1.4423596162E+00
+        $atom:H17    $mol:... @atom:HC      0.141000 -4.1558394408E+00 -3.1038328648E+00 -4.5028711060E-01
+        $atom:C10    $mol:... @atom:CPos   -0.187000 -6.8252363025E+00 -1.1374368229E+00 -1.2511452223E+00
+        $atom:H18    $mol:... @atom:HC      0.141000 -7.5175759545E+00 -4.8325617810E-01 -6.5719758920E-01
+        $atom:H19    $mol:... @atom:HC      0.141000 -7.4134252381E+00 -1.9607447531E+00 -1.7371392158E+00
+        $atom:H20    $mol:... @atom:HC      0.141000 -6.3119025621E+00 -5.2433877360E-01 -2.0388686710E+00
+        $atom:C11    $mol:... @atom:CPos   -0.187000 -6.4812424214E+00 -2.4401628352E+00  7.7953244840E-01
+        $atom:H21    $mol:... @atom:HC      0.141000 -7.1652176671E+00 -3.2251914096E+00  3.6048407440E-01
+        $atom:H22    $mol:... @atom:HC      0.141000 -7.0809718612E+00 -1.7094564998E+00  1.3829560175E+00
+        $atom:H23    $mol:... @atom:HC      0.141000 -5.7101949774E+00 -2.9245049903E+00  1.4357835887E+00
+    }
+    write("Data Bonds"){
+        $bond:b1      @bond:g4     $atom:H42    $atom:C20    
+        $bond:b2      @bond:g4     $atom:C20    $atom:H40    
+        $bond:b3      @bond:g4     $atom:C20    $atom:H41    
+        $bond:b4      @bond:g69    $atom:C20    $atom:C19    
+        $bond:b5      @bond:g4     $atom:C19    $atom:H38    
+        $bond:b6      @bond:g4     $atom:C19    $atom:H39    
+        $bond:b7      @bond:g26    $atom:C19    $atom:C18    
+        $bond:b8      @bond:g4     $atom:C18    $atom:H36    
+        $bond:b9      @bond:g4     $atom:C18    $atom:H37    
+        $bond:b10     @bond:g26    $atom:C18    $atom:C17    
+        $bond:b11     @bond:g4     $atom:C17    $atom:H34    
+        $bond:b12     @bond:g4     $atom:C17    $atom:H35    
+        $bond:b13     @bond:g26    $atom:C17    $atom:C16    
+        $bond:b14     @bond:g4     $atom:C16    $atom:H32    
+        $bond:b15     @bond:g4     $atom:C16    $atom:H33    
+        $bond:b16     @bond:g26    $atom:C16    $atom:C15    
+        $bond:b17     @bond:g4     $atom:C15    $atom:H30    
+        $bond:b18     @bond:g4     $atom:C15    $atom:H31    
+        $bond:b19     @bond:g26    $atom:C15    $atom:C14    
+        $bond:b20     @bond:g4     $atom:C14    $atom:H28    
+        $bond:b21     @bond:g4     $atom:C14    $atom:H29    
+        $bond:b22     @bond:g26    $atom:C14    $atom:C13    
+        $bond:b23     @bond:g4     $atom:C13    $atom:H26    
+        $bond:b24     @bond:g4     $atom:C13    $atom:H27    
+        $bond:b25     @bond:g26    $atom:C13    $atom:C12    
+        $bond:b26     @bond:g4     $atom:C12    $atom:H24    
+        $bond:b27     @bond:g4     $atom:C12    $atom:H25    
+        $bond:b28     @bond:g26    $atom:C12    $atom:C8     
+        $bond:b29     @bond:g4     $atom:C8     $atom:H13    
+        $bond:b30     @bond:g4     $atom:C8     $atom:H14    
+        $bond:b31     @bond:g26    $atom:C8     $atom:C6     
+        $bond:b32     @bond:g4     $atom:C6     $atom:H11    
+        $bond:b33     @bond:g4     $atom:C6     $atom:H12    
+        $bond:b34     @bond:g26    $atom:C6     $atom:C4     
+        $bond:b35     @bond:g4     $atom:C4     $atom:H7     
+        $bond:b36     @bond:g4     $atom:C4     $atom:H8     
+        $bond:b37     @bond:g26    $atom:C4     $atom:C2     
+        $bond:b38     @bond:g4     $atom:C2     $atom:H3     
+        $bond:b39     @bond:g4     $atom:C2     $atom:H4     
+        $bond:b40     @bond:g26    $atom:C2     $atom:C1     
+        $bond:b41     @bond:g4     $atom:C1     $atom:H1     
+        $bond:b42     @bond:g4     $atom:C1     $atom:H2     
+        $bond:b43     @bond:g26    $atom:C1     $atom:C3     
+        $bond:b44     @bond:g4     $atom:C3     $atom:H5     
+        $bond:b45     @bond:g4     $atom:C3     $atom:H6     
+        $bond:b46     @bond:g26    $atom:C3     $atom:C5     
+        $bond:b47     @bond:g146   $atom:C5     $atom:H9     
+        $bond:b48     @bond:g146   $atom:C5     $atom:H10    
+        $bond:b49     @bond:g69    $atom:C5     $atom:N7     
+        $bond:b50     @bond:g158   $atom:N7     $atom:C9     
+        $bond:b51     @bond:g158   $atom:N7     $atom:C10    
+        $bond:b52     @bond:g158   $atom:N7     $atom:C11    
+        $bond:b53     @bond:g4     $atom:C9     $atom:H15    
+        $bond:b54     @bond:g4     $atom:C9     $atom:H16    
+        $bond:b55     @bond:g4     $atom:C9     $atom:H17    
+        $bond:b56     @bond:g4     $atom:C10    $atom:H18    
+        $bond:b57     @bond:g4     $atom:C10    $atom:H19    
+        $bond:b58     @bond:g4     $atom:C10    $atom:H20    
+        $bond:b59     @bond:g4     $atom:C11    $atom:H21    
+        $bond:b60     @bond:g4     $atom:C11    $atom:H22    
+        $bond:b61     @bond:g4     $atom:C11    $atom:H23    
+    }
+    write("Data Angles"){
+        $angle:a1      @angle:g47    $atom:H42    $atom:C20    $atom:H40    
+        $angle:a2      @angle:g47    $atom:H42    $atom:C20    $atom:H41    
+        $angle:a3      @angle:g51    $atom:H42    $atom:C20    $atom:C19    
+        $angle:a4      @angle:g47    $atom:H40    $atom:C20    $atom:H41    
+        $angle:a5      @angle:g51    $atom:H40    $atom:C20    $atom:C19    
+        $angle:a6      @angle:g51    $atom:H41    $atom:C20    $atom:C19    
+        $angle:a7      @angle:g14    $atom:C20    $atom:C19    $atom:H38    
+        $angle:a8      @angle:g14    $atom:C20    $atom:C19    $atom:H39    
+        $angle:a9      @angle:g15    $atom:C20    $atom:C19    $atom:C18    
+        $angle:a10     @angle:g63    $atom:H38    $atom:C19    $atom:H39    
+        $angle:a11     @angle:g8     $atom:H38    $atom:C19    $atom:C18    
+        $angle:a12     @angle:g8     $atom:H39    $atom:C19    $atom:C18    
+        $angle:a13     @angle:g14    $atom:C19    $atom:C18    $atom:H36    
+        $angle:a14     @angle:g14    $atom:C19    $atom:C18    $atom:H37    
+        $angle:a15     @angle:g15    $atom:C19    $atom:C18    $atom:C17    
+        $angle:a16     @angle:g63    $atom:H36    $atom:C18    $atom:H37    
+        $angle:a17     @angle:g8     $atom:H36    $atom:C18    $atom:C17    
+        $angle:a18     @angle:g8     $atom:H37    $atom:C18    $atom:C17    
+        $angle:a19     @angle:g14    $atom:C18    $atom:C17    $atom:H34    
+        $angle:a20     @angle:g14    $atom:C18    $atom:C17    $atom:H35    
+        $angle:a21     @angle:g15    $atom:C18    $atom:C17    $atom:C16    
+        $angle:a22     @angle:g63    $atom:H34    $atom:C17    $atom:H35    
+        $angle:a23     @angle:g8     $atom:H34    $atom:C17    $atom:C16    
+        $angle:a24     @angle:g8     $atom:H35    $atom:C17    $atom:C16    
+        $angle:a25     @angle:g8     $atom:C17    $atom:C16    $atom:H32    
+        $angle:a26     @angle:g8     $atom:C17    $atom:C16    $atom:H33    
+        $angle:a27     @angle:g15    $atom:C17    $atom:C16    $atom:C15    
+        $angle:a28     @angle:g63    $atom:H32    $atom:C16    $atom:H33    
+        $angle:a29     @angle:g8     $atom:H32    $atom:C16    $atom:C15    
+        $angle:a30     @angle:g8     $atom:H33    $atom:C16    $atom:C15    
+        $angle:a31     @angle:g8     $atom:C16    $atom:C15    $atom:H30    
+        $angle:a32     @angle:g8     $atom:C16    $atom:C15    $atom:H31    
+        $angle:a33     @angle:g15    $atom:C16    $atom:C15    $atom:C14    
+        $angle:a34     @angle:g63    $atom:H30    $atom:C15    $atom:H31    
+        $angle:a35     @angle:g8     $atom:H30    $atom:C15    $atom:C14    
+        $angle:a36     @angle:g8     $atom:H31    $atom:C15    $atom:C14    
+        $angle:a37     @angle:g14    $atom:C15    $atom:C14    $atom:H28    
+        $angle:a38     @angle:g14    $atom:C15    $atom:C14    $atom:H29    
+        $angle:a39     @angle:g15    $atom:C15    $atom:C14    $atom:C13    
+        $angle:a40     @angle:g63    $atom:H28    $atom:C14    $atom:H29    
+        $angle:a41     @angle:g14    $atom:H28    $atom:C14    $atom:C13    
+        $angle:a42     @angle:g14    $atom:H29    $atom:C14    $atom:C13    
+        $angle:a43     @angle:g14    $atom:C14    $atom:C13    $atom:H26    
+        $angle:a44     @angle:g14    $atom:C14    $atom:C13    $atom:H27    
+        $angle:a45     @angle:g15    $atom:C14    $atom:C13    $atom:C12    
+        $angle:a46     @angle:g63    $atom:H26    $atom:C13    $atom:H27    
+        $angle:a47     @angle:g56    $atom:H26    $atom:C13    $atom:C12    
+        $angle:a48     @angle:g56    $atom:H27    $atom:C13    $atom:C12    
+        $angle:a49     @angle:g14    $atom:C13    $atom:C12    $atom:H24    
+        $angle:a50     @angle:g14    $atom:C13    $atom:C12    $atom:H25    
+        $angle:a51     @angle:g15    $atom:C13    $atom:C12    $atom:C8     
+        $angle:a52     @angle:g63    $atom:H24    $atom:C12    $atom:H25    
+        $angle:a53     @angle:g56    $atom:H24    $atom:C12    $atom:C8     
+        $angle:a54     @angle:g56    $atom:H25    $atom:C12    $atom:C8     
+        $angle:a55     @angle:g8     $atom:C12    $atom:C8     $atom:H13    
+        $angle:a56     @angle:g8     $atom:C12    $atom:C8     $atom:H14    
+        $angle:a57     @angle:g15    $atom:C12    $atom:C8     $atom:C6     
+        $angle:a58     @angle:g63    $atom:H13    $atom:C8     $atom:H14    
+        $angle:a59     @angle:g14    $atom:H13    $atom:C8     $atom:C6     
+        $angle:a60     @angle:g14    $atom:H14    $atom:C8     $atom:C6     
+        $angle:a61     @angle:g8     $atom:C8     $atom:C6     $atom:H11    
+        $angle:a62     @angle:g8     $atom:C8     $atom:C6     $atom:H12    
+        $angle:a63     @angle:g15    $atom:C8     $atom:C6     $atom:C4     
+        $angle:a64     @angle:g63    $atom:H11    $atom:C6     $atom:H12    
+        $angle:a65     @angle:g8     $atom:H11    $atom:C6     $atom:C4     
+        $angle:a66     @angle:g8     $atom:H12    $atom:C6     $atom:C4     
+        $angle:a67     @angle:g56    $atom:C6     $atom:C4     $atom:H7     
+        $angle:a68     @angle:g56    $atom:C6     $atom:C4     $atom:H8     
+        $angle:a69     @angle:g15    $atom:C6     $atom:C4     $atom:C2     
+        $angle:a70     @angle:g63    $atom:H7     $atom:C4     $atom:H8     
+        $angle:a71     @angle:g102   $atom:H7     $atom:C4     $atom:C2     
+        $angle:a72     @angle:g102   $atom:H8     $atom:C4     $atom:C2     
+        $angle:a73     @angle:g14    $atom:C4     $atom:C2     $atom:H3     
+        $angle:a74     @angle:g14    $atom:C4     $atom:C2     $atom:H4     
+        $angle:a75     @angle:g15    $atom:C4     $atom:C2     $atom:C1     
+        $angle:a76     @angle:g46    $atom:H3     $atom:C2     $atom:H4     
+        $angle:a77     @angle:g14    $atom:H3     $atom:C2     $atom:C1     
+        $angle:a78     @angle:g14    $atom:H4     $atom:C2     $atom:C1     
+        $angle:a79     @angle:g7     $atom:C2     $atom:C1     $atom:H1     
+        $angle:a80     @angle:g7     $atom:C2     $atom:C1     $atom:H2     
+        $angle:a81     @angle:g15    $atom:C2     $atom:C1     $atom:C3     
+        $angle:a82     @angle:g63    $atom:H1     $atom:C1     $atom:H2     
+        $angle:a83     @angle:g63    $atom:H1     $atom:C1     $atom:C3     
+        $angle:a84     @angle:g63    $atom:H2     $atom:C1     $atom:C3     
+        $angle:a85     @angle:g8     $atom:C1     $atom:C3     $atom:H5     
+        $angle:a86     @angle:g8     $atom:C1     $atom:C3     $atom:H6     
+        $angle:a87     @angle:g15    $atom:C1     $atom:C3     $atom:C5     
+        $angle:a88     @angle:g49    $atom:H5     $atom:C3     $atom:H6     
+        $angle:a89     @angle:g102   $atom:H5     $atom:C3     $atom:C5     
+        $angle:a90     @angle:g102   $atom:H6     $atom:C3     $atom:C5     
+        $angle:a91     @angle:g56    $atom:C3     $atom:C5     $atom:H9     
+        $angle:a92     @angle:g56    $atom:C3     $atom:C5     $atom:H10    
+        $angle:a93     @angle:g19    $atom:C3     $atom:C5     $atom:N7     
+        $angle:a94     @angle:g47    $atom:H9     $atom:C5     $atom:H10    
+        $angle:a95     @angle:g63    $atom:H9     $atom:C5     $atom:N7     
+        $angle:a96     @angle:g63    $atom:H10    $atom:C5     $atom:N7     
+        $angle:a97     @angle:g51    $atom:C5     $atom:N7     $atom:C9     
+        $angle:a98     @angle:g51    $atom:C5     $atom:N7     $atom:C10    
+        $angle:a99     @angle:g51    $atom:C5     $atom:N7     $atom:C11    
+        $angle:a100    @angle:g8     $atom:C9     $atom:N7     $atom:C10    
+        $angle:a101    @angle:g8     $atom:C9     $atom:N7     $atom:C11    
+        $angle:a102    @angle:g8     $atom:C10    $atom:N7     $atom:C11    
+        $angle:a103    @angle:g8     $atom:N7     $atom:C9     $atom:H15    
+        $angle:a104    @angle:g8     $atom:N7     $atom:C9     $atom:H16    
+        $angle:a105    @angle:g8     $atom:N7     $atom:C9     $atom:H17    
+        $angle:a106    @angle:g14    $atom:H15    $atom:C9     $atom:H16    
+        $angle:a107    @angle:g14    $atom:H15    $atom:C9     $atom:H17    
+        $angle:a108    @angle:g14    $atom:H16    $atom:C9     $atom:H17    
+        $angle:a109    @angle:g8     $atom:N7     $atom:C10    $atom:H18    
+        $angle:a110    @angle:g8     $atom:N7     $atom:C10    $atom:H19    
+        $angle:a111    @angle:g8     $atom:N7     $atom:C10    $atom:H20    
+        $angle:a112    @angle:g14    $atom:H18    $atom:C10    $atom:H19    
+        $angle:a113    @angle:g14    $atom:H18    $atom:C10    $atom:H20    
+        $angle:a114    @angle:g14    $atom:H19    $atom:C10    $atom:H20    
+        $angle:a115    @angle:g8     $atom:N7     $atom:C11    $atom:H21    
+        $angle:a116    @angle:g8     $atom:N7     $atom:C11    $atom:H22    
+        $angle:a117    @angle:g8     $atom:N7     $atom:C11    $atom:H23    
+        $angle:a118    @angle:g14    $atom:H21    $atom:C11    $atom:H22    
+        $angle:a119    @angle:g14    $atom:H21    $atom:C11    $atom:H23    
+        $angle:a120    @angle:g14    $atom:H22    $atom:C11    $atom:H23    
+    }
+    write("Data Dihedrals"){
+        $dihedral:d1      @dihedral:glj14  $atom:H42    $atom:C20    $atom:C19    $atom:H38    
+        $dihedral:d2      @dihedral:glj14  $atom:H42    $atom:C20    $atom:C19    $atom:H39    
+        $dihedral:d3      @dihedral:glj14  $atom:H42    $atom:C20    $atom:C19    $atom:C18    
+        $dihedral:d4      @dihedral:glj14  $atom:C20    $atom:C19    $atom:C18    $atom:H36    
+        $dihedral:d5      @dihedral:glj14  $atom:C20    $atom:C19    $atom:C18    $atom:H37    
+        $dihedral:d6      @dihedral:g34    $atom:C20    $atom:C19    $atom:C18    $atom:C17    
+        $dihedral:d7      @dihedral:glj14  $atom:H40    $atom:C20    $atom:C19    $atom:H38    
+        $dihedral:d8      @dihedral:glj14  $atom:H40    $atom:C20    $atom:C19    $atom:H39    
+        $dihedral:d9      @dihedral:g34    $atom:H40    $atom:C20    $atom:C19    $atom:C18    
+        $dihedral:d10     @dihedral:glj14  $atom:H41    $atom:C20    $atom:C19    $atom:H38    
+        $dihedral:d11     @dihedral:glj14  $atom:H41    $atom:C20    $atom:C19    $atom:H39    
+        $dihedral:d12     @dihedral:glj14  $atom:H41    $atom:C20    $atom:C19    $atom:C18    
+        $dihedral:d13     @dihedral:glj14  $atom:C19    $atom:C18    $atom:C17    $atom:H34    
+        $dihedral:d14     @dihedral:glj14  $atom:C19    $atom:C18    $atom:C17    $atom:H35    
+        $dihedral:d15     @dihedral:g34    $atom:C19    $atom:C18    $atom:C17    $atom:C16    
+        $dihedral:d16     @dihedral:glj14  $atom:H38    $atom:C19    $atom:C18    $atom:H36    
+        $dihedral:d17     @dihedral:glj14  $atom:H38    $atom:C19    $atom:C18    $atom:H37    
+        $dihedral:d18     @dihedral:glj14  $atom:H38    $atom:C19    $atom:C18    $atom:C17    
+        $dihedral:d19     @dihedral:glj14  $atom:H39    $atom:C19    $atom:C18    $atom:H36    
+        $dihedral:d20     @dihedral:glj14  $atom:H39    $atom:C19    $atom:C18    $atom:H37    
+        $dihedral:d21     @dihedral:glj14  $atom:H39    $atom:C19    $atom:C18    $atom:C17    
+        $dihedral:d22     @dihedral:glj14  $atom:C18    $atom:C17    $atom:C16    $atom:H32    
+        $dihedral:d23     @dihedral:glj14  $atom:C18    $atom:C17    $atom:C16    $atom:H33    
+        $dihedral:d24     @dihedral:g34    $atom:C18    $atom:C17    $atom:C16    $atom:C15    
+        $dihedral:d25     @dihedral:glj14  $atom:H36    $atom:C18    $atom:C17    $atom:H34    
+        $dihedral:d26     @dihedral:glj14  $atom:H36    $atom:C18    $atom:C17    $atom:H35    
+        $dihedral:d27     @dihedral:glj14  $atom:H36    $atom:C18    $atom:C17    $atom:C16    
+        $dihedral:d28     @dihedral:glj14  $atom:H37    $atom:C18    $atom:C17    $atom:H34    
+        $dihedral:d29     @dihedral:glj14  $atom:H37    $atom:C18    $atom:C17    $atom:H35    
+        $dihedral:d30     @dihedral:glj14  $atom:H37    $atom:C18    $atom:C17    $atom:C16    
+        $dihedral:d31     @dihedral:glj14  $atom:C17    $atom:C16    $atom:C15    $atom:H30    
+        $dihedral:d32     @dihedral:glj14  $atom:C17    $atom:C16    $atom:C15    $atom:H31    
+        $dihedral:d33     @dihedral:g34    $atom:C17    $atom:C16    $atom:C15    $atom:C14    
+        $dihedral:d34     @dihedral:glj14  $atom:H34    $atom:C17    $atom:C16    $atom:H32    
+        $dihedral:d35     @dihedral:glj14  $atom:H34    $atom:C17    $atom:C16    $atom:H33    
+        $dihedral:d36     @dihedral:glj14  $atom:H34    $atom:C17    $atom:C16    $atom:C15    
+        $dihedral:d37     @dihedral:glj14  $atom:H35    $atom:C17    $atom:C16    $atom:H32    
+        $dihedral:d38     @dihedral:glj14  $atom:H35    $atom:C17    $atom:C16    $atom:H33    
+        $dihedral:d39     @dihedral:glj14  $atom:H35    $atom:C17    $atom:C16    $atom:C15    
+        $dihedral:d40     @dihedral:glj14  $atom:C16    $atom:C15    $atom:C14    $atom:H28    
+        $dihedral:d41     @dihedral:glj14  $atom:C16    $atom:C15    $atom:C14    $atom:H29    
+        $dihedral:d42     @dihedral:g34    $atom:C16    $atom:C15    $atom:C14    $atom:C13    
+        $dihedral:d43     @dihedral:glj14  $atom:H32    $atom:C16    $atom:C15    $atom:H30    
+        $dihedral:d44     @dihedral:glj14  $atom:H32    $atom:C16    $atom:C15    $atom:H31    
+        $dihedral:d45     @dihedral:glj14  $atom:H32    $atom:C16    $atom:C15    $atom:C14    
+        $dihedral:d46     @dihedral:glj14  $atom:H33    $atom:C16    $atom:C15    $atom:H30    
+        $dihedral:d47     @dihedral:glj14  $atom:H33    $atom:C16    $atom:C15    $atom:H31    
+        $dihedral:d48     @dihedral:glj14  $atom:H33    $atom:C16    $atom:C15    $atom:C14    
+        $dihedral:d49     @dihedral:glj14  $atom:C15    $atom:C14    $atom:C13    $atom:H26    
+        $dihedral:d50     @dihedral:glj14  $atom:C15    $atom:C14    $atom:C13    $atom:H27    
+        $dihedral:d51     @dihedral:g34    $atom:C15    $atom:C14    $atom:C13    $atom:C12    
+        $dihedral:d52     @dihedral:glj14  $atom:H30    $atom:C15    $atom:C14    $atom:H28    
+        $dihedral:d53     @dihedral:glj14  $atom:H30    $atom:C15    $atom:C14    $atom:H29    
+        $dihedral:d54     @dihedral:glj14  $atom:H30    $atom:C15    $atom:C14    $atom:C13    
+        $dihedral:d55     @dihedral:glj14  $atom:H31    $atom:C15    $atom:C14    $atom:H28    
+        $dihedral:d56     @dihedral:glj14  $atom:H31    $atom:C15    $atom:C14    $atom:H29    
+        $dihedral:d57     @dihedral:glj14  $atom:H31    $atom:C15    $atom:C14    $atom:C13    
+        $dihedral:d58     @dihedral:glj14  $atom:C14    $atom:C13    $atom:C12    $atom:H24    
+        $dihedral:d59     @dihedral:glj14  $atom:C14    $atom:C13    $atom:C12    $atom:H25    
+        $dihedral:d60     @dihedral:g34    $atom:C14    $atom:C13    $atom:C12    $atom:C8     
+        $dihedral:d61     @dihedral:glj14  $atom:H28    $atom:C14    $atom:C13    $atom:H26    
+        $dihedral:d62     @dihedral:glj14  $atom:H28    $atom:C14    $atom:C13    $atom:H27    
+        $dihedral:d63     @dihedral:glj14  $atom:H28    $atom:C14    $atom:C13    $atom:C12    
+        $dihedral:d64     @dihedral:glj14  $atom:H29    $atom:C14    $atom:C13    $atom:H26    
+        $dihedral:d65     @dihedral:glj14  $atom:H29    $atom:C14    $atom:C13    $atom:H27    
+        $dihedral:d66     @dihedral:glj14  $atom:H29    $atom:C14    $atom:C13    $atom:C12    
+        $dihedral:d67     @dihedral:glj14  $atom:C13    $atom:C12    $atom:C8     $atom:H13    
+        $dihedral:d68     @dihedral:glj14  $atom:C13    $atom:C12    $atom:C8     $atom:H14    
+        $dihedral:d69     @dihedral:g34    $atom:C13    $atom:C12    $atom:C8     $atom:C6     
+        $dihedral:d70     @dihedral:glj14  $atom:H26    $atom:C13    $atom:C12    $atom:H24    
+        $dihedral:d71     @dihedral:glj14  $atom:H26    $atom:C13    $atom:C12    $atom:H25    
+        $dihedral:d72     @dihedral:glj14  $atom:H26    $atom:C13    $atom:C12    $atom:C8     
+        $dihedral:d73     @dihedral:glj14  $atom:H27    $atom:C13    $atom:C12    $atom:H24    
+        $dihedral:d74     @dihedral:glj14  $atom:H27    $atom:C13    $atom:C12    $atom:H25    
+        $dihedral:d75     @dihedral:glj14  $atom:H27    $atom:C13    $atom:C12    $atom:C8     
+        $dihedral:d76     @dihedral:glj14  $atom:C12    $atom:C8     $atom:C6     $atom:H11    
+        $dihedral:d77     @dihedral:glj14  $atom:C12    $atom:C8     $atom:C6     $atom:H12    
+        $dihedral:d78     @dihedral:g34    $atom:C12    $atom:C8     $atom:C6     $atom:C4     
+        $dihedral:d79     @dihedral:glj14  $atom:H24    $atom:C12    $atom:C8     $atom:H13    
+        $dihedral:d80     @dihedral:glj14  $atom:H24    $atom:C12    $atom:C8     $atom:H14    
+        $dihedral:d81     @dihedral:glj14  $atom:H24    $atom:C12    $atom:C8     $atom:C6     
+        $dihedral:d82     @dihedral:glj14  $atom:H25    $atom:C12    $atom:C8     $atom:H13    
+        $dihedral:d83     @dihedral:glj14  $atom:H25    $atom:C12    $atom:C8     $atom:H14    
+        $dihedral:d84     @dihedral:glj14  $atom:H25    $atom:C12    $atom:C8     $atom:C6     
+        $dihedral:d85     @dihedral:glj14  $atom:C8     $atom:C6     $atom:C4     $atom:H7     
+        $dihedral:d86     @dihedral:glj14  $atom:C8     $atom:C6     $atom:C4     $atom:H8     
+        $dihedral:d87     @dihedral:g34    $atom:C8     $atom:C6     $atom:C4     $atom:C2     
+        $dihedral:d88     @dihedral:glj14  $atom:H13    $atom:C8     $atom:C6     $atom:H11    
+        $dihedral:d89     @dihedral:glj14  $atom:H13    $atom:C8     $atom:C6     $atom:H12    
+        $dihedral:d90     @dihedral:glj14  $atom:H13    $atom:C8     $atom:C6     $atom:C4     
+        $dihedral:d91     @dihedral:glj14  $atom:H14    $atom:C8     $atom:C6     $atom:H11    
+        $dihedral:d92     @dihedral:glj14  $atom:H14    $atom:C8     $atom:C6     $atom:H12    
+        $dihedral:d93     @dihedral:glj14  $atom:H14    $atom:C8     $atom:C6     $atom:C4     
+        $dihedral:d94     @dihedral:glj14  $atom:C6     $atom:C4     $atom:C2     $atom:H3     
+        $dihedral:d95     @dihedral:glj14  $atom:C6     $atom:C4     $atom:C2     $atom:H4     
+        $dihedral:d96     @dihedral:g46    $atom:C6     $atom:C4     $atom:C2     $atom:C1     
+        $dihedral:d97     @dihedral:glj14  $atom:H11    $atom:C6     $atom:C4     $atom:H7     
+        $dihedral:d98     @dihedral:glj14  $atom:H11    $atom:C6     $atom:C4     $atom:H8     
+        $dihedral:d99     @dihedral:glj14  $atom:H11    $atom:C6     $atom:C4     $atom:C2     
+        $dihedral:d100    @dihedral:glj14  $atom:H12    $atom:C6     $atom:C4     $atom:H7     
+        $dihedral:d101    @dihedral:glj14  $atom:H12    $atom:C6     $atom:C4     $atom:H8     
+        $dihedral:d102    @dihedral:glj14  $atom:H12    $atom:C6     $atom:C4     $atom:C2     
+        $dihedral:d103    @dihedral:glj14  $atom:C4     $atom:C2     $atom:C1     $atom:H1     
+        $dihedral:d104    @dihedral:glj14  $atom:C4     $atom:C2     $atom:C1     $atom:H2     
+        $dihedral:d105    @dihedral:g34    $atom:C4     $atom:C2     $atom:C1     $atom:C3     
+        $dihedral:d106    @dihedral:glj14  $atom:H7     $atom:C4     $atom:C2     $atom:H3     
+        $dihedral:d107    @dihedral:glj14  $atom:H7     $atom:C4     $atom:C2     $atom:H4     
+        $dihedral:d108    @dihedral:glj14  $atom:H7     $atom:C4     $atom:C2     $atom:C1     
+        $dihedral:d109    @dihedral:glj14  $atom:H8     $atom:C4     $atom:C2     $atom:H3     
+        $dihedral:d110    @dihedral:glj14  $atom:H8     $atom:C4     $atom:C2     $atom:H4     
+        $dihedral:d111    @dihedral:glj14  $atom:H8     $atom:C4     $atom:C2     $atom:C1     
+        $dihedral:d112    @dihedral:glj14  $atom:C2     $atom:C1     $atom:C3     $atom:H5     
+        $dihedral:d113    @dihedral:glj14  $atom:C2     $atom:C1     $atom:C3     $atom:H6     
+        $dihedral:d114    @dihedral:g34    $atom:C2     $atom:C1     $atom:C3     $atom:C5     
+        $dihedral:d115    @dihedral:glj14  $atom:H3     $atom:C2     $atom:C1     $atom:H1     
+        $dihedral:d116    @dihedral:glj14  $atom:H3     $atom:C2     $atom:C1     $atom:H2     
+        $dihedral:d117    @dihedral:glj14  $atom:H3     $atom:C2     $atom:C1     $atom:C3     
+        $dihedral:d118    @dihedral:glj14  $atom:H4     $atom:C2     $atom:C1     $atom:H1     
+        $dihedral:d119    @dihedral:glj14  $atom:H4     $atom:C2     $atom:C1     $atom:H2     
+        $dihedral:d120    @dihedral:glj14  $atom:H4     $atom:C2     $atom:C1     $atom:C3     
+        $dihedral:d121    @dihedral:glj14  $atom:C1     $atom:C3     $atom:C5     $atom:H9     
+        $dihedral:d122    @dihedral:glj14  $atom:C1     $atom:C3     $atom:C5     $atom:H10    
+        $dihedral:d123    @dihedral:g34    $atom:C1     $atom:C3     $atom:C5     $atom:N7     
+        $dihedral:d124    @dihedral:glj14  $atom:H1     $atom:C1     $atom:C3     $atom:H5     
+        $dihedral:d125    @dihedral:glj14  $atom:H1     $atom:C1     $atom:C3     $atom:H6     
+        $dihedral:d126    @dihedral:glj14  $atom:H1     $atom:C1     $atom:C3     $atom:C5     
+        $dihedral:d127    @dihedral:glj14  $atom:H2     $atom:C1     $atom:C3     $atom:H5     
+        $dihedral:d128    @dihedral:glj14  $atom:H2     $atom:C1     $atom:C3     $atom:H6     
+        $dihedral:d129    @dihedral:glj14  $atom:H2     $atom:C1     $atom:C3     $atom:C5     
+        $dihedral:d130    @dihedral:g22    $atom:C3     $atom:C5     $atom:N7     $atom:C9     
+        $dihedral:d131    @dihedral:glj14  $atom:C3     $atom:C5     $atom:N7     $atom:C10    
+        $dihedral:d132    @dihedral:glj14  $atom:C3     $atom:C5     $atom:N7     $atom:C11    
+        $dihedral:d133    @dihedral:glj14  $atom:H5     $atom:C3     $atom:C5     $atom:H9     
+        $dihedral:d134    @dihedral:glj14  $atom:H5     $atom:C3     $atom:C5     $atom:H10    
+        $dihedral:d135    @dihedral:glj14  $atom:H5     $atom:C3     $atom:C5     $atom:N7     
+        $dihedral:d136    @dihedral:glj14  $atom:H6     $atom:C3     $atom:C5     $atom:H9     
+        $dihedral:d137    @dihedral:glj14  $atom:H6     $atom:C3     $atom:C5     $atom:H10    
+        $dihedral:d138    @dihedral:glj14  $atom:H6     $atom:C3     $atom:C5     $atom:N7     
+        $dihedral:d139    @dihedral:g22    $atom:C5     $atom:N7     $atom:C9     $atom:H15    
+        $dihedral:d140    @dihedral:glj14  $atom:C5     $atom:N7     $atom:C9     $atom:H16    
+        $dihedral:d141    @dihedral:glj14  $atom:C5     $atom:N7     $atom:C9     $atom:H17    
+        $dihedral:d142    @dihedral:g22    $atom:C5     $atom:N7     $atom:C10    $atom:H18    
+        $dihedral:d143    @dihedral:glj14  $atom:C5     $atom:N7     $atom:C10    $atom:H19    
+        $dihedral:d144    @dihedral:glj14  $atom:C5     $atom:N7     $atom:C10    $atom:H20    
+        $dihedral:d145    @dihedral:g22    $atom:C5     $atom:N7     $atom:C11    $atom:H21    
+        $dihedral:d146    @dihedral:glj14  $atom:C5     $atom:N7     $atom:C11    $atom:H22    
+        $dihedral:d147    @dihedral:glj14  $atom:C5     $atom:N7     $atom:C11    $atom:H23    
+        $dihedral:d148    @dihedral:glj14  $atom:H9     $atom:C5     $atom:N7     $atom:C9     
+        $dihedral:d149    @dihedral:glj14  $atom:H9     $atom:C5     $atom:N7     $atom:C10    
+        $dihedral:d150    @dihedral:glj14  $atom:H9     $atom:C5     $atom:N7     $atom:C11    
+        $dihedral:d151    @dihedral:glj14  $atom:H10    $atom:C5     $atom:N7     $atom:C9     
+        $dihedral:d152    @dihedral:glj14  $atom:H10    $atom:C5     $atom:N7     $atom:C10    
+        $dihedral:d153    @dihedral:glj14  $atom:H10    $atom:C5     $atom:N7     $atom:C11    
+        $dihedral:d154    @dihedral:glj14  $atom:C9     $atom:N7     $atom:C10    $atom:H18    
+        $dihedral:d155    @dihedral:glj14  $atom:C9     $atom:N7     $atom:C10    $atom:H19    
+        $dihedral:d156    @dihedral:glj14  $atom:C9     $atom:N7     $atom:C10    $atom:H20    
+        $dihedral:d157    @dihedral:glj14  $atom:C9     $atom:N7     $atom:C11    $atom:H21    
+        $dihedral:d158    @dihedral:glj14  $atom:C9     $atom:N7     $atom:C11    $atom:H22    
+        $dihedral:d159    @dihedral:glj14  $atom:C9     $atom:N7     $atom:C11    $atom:H23    
+        $dihedral:d160    @dihedral:glj14  $atom:C10    $atom:N7     $atom:C9     $atom:H15    
+        $dihedral:d161    @dihedral:glj14  $atom:C10    $atom:N7     $atom:C9     $atom:H16    
+        $dihedral:d162    @dihedral:glj14  $atom:C10    $atom:N7     $atom:C9     $atom:H17    
+        $dihedral:d163    @dihedral:glj14  $atom:C10    $atom:N7     $atom:C11    $atom:H21    
+        $dihedral:d164    @dihedral:glj14  $atom:C10    $atom:N7     $atom:C11    $atom:H22    
+        $dihedral:d165    @dihedral:glj14  $atom:C10    $atom:N7     $atom:C11    $atom:H23    
+        $dihedral:d166    @dihedral:glj14  $atom:C11    $atom:N7     $atom:C9     $atom:H15    
+        $dihedral:d167    @dihedral:glj14  $atom:C11    $atom:N7     $atom:C9     $atom:H16    
+        $dihedral:d168    @dihedral:glj14  $atom:C11    $atom:N7     $atom:C9     $atom:H17    
+        $dihedral:d169    @dihedral:glj14  $atom:C11    $atom:N7     $atom:C10    $atom:H18    
+        $dihedral:d170    @dihedral:glj14  $atom:C11    $atom:N7     $atom:C10    $atom:H19    
+        $dihedral:d171    @dihedral:glj14  $atom:C11    $atom:N7     $atom:C10    $atom:H20    
+    }
+    write("Data Impropers"){
+    }
+}
